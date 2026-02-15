@@ -35,11 +35,19 @@ def process(query:str):
     initial_state = {
         "messages":[SystemMessage(systemPrompt), HumanMessage(query)]
     }
+    print("Creating your web app....")
     for chunk in graph.stream(initial_state, stream_mode="values"):
         msg = chunk["messages"][-1]
         if msg.type=="ai":
             data = json.loads(msg.content)
-            return data
+            print("Creating your web app....")
+            with open("index.html","w") as f:
+                f.write(data["html"])
+            with open("style.css","w") as f:
+                f.write(data["css"])
+            with open("script.js","w") as f:
+                f.write(data["js"])
+            return "success!"
 while True:
     query = input(">> ")
     print(process(query=query))
