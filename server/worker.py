@@ -10,11 +10,11 @@ from typing import Literal, List
 load_dotenv()
 class State(MessagesState):
     pass
-class Schema(BaseModel):
-    type: Literal["html","css","js"] = Field(description="Type of the file")
-    code: str = Field(description="The code of ther type")
+
 class AIoutput(BaseModel):
-    output: List[Schema]
+    html:str =  Field(description="Full HTML Code")
+    css:str =  Field(description="Full CSS Code")
+    js:str =  Field(description="Full JS Code")
 llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 llm_withCodeStructure = llm.with_structured_output(schema=AIoutput)
 
