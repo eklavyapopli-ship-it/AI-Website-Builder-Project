@@ -3,10 +3,8 @@ from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 import json
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
-from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.graph import StateGraph, MessagesState, START, END
 from pydantic import BaseModel, Field
-from typing import Literal, List
 load_dotenv()
 class State(MessagesState):
     pass
@@ -41,13 +39,10 @@ def process(query:str):
         if msg.type=="ai":
             data = json.loads(msg.content)
             print("Creating your web app....")
-            with open("index.html","w") as f:
+            with open("uploads/index.html","w") as f:
                 f.write(data["html"])
-            with open("style.css","w") as f:
+            with open("uploads/style.css","w") as f:
                 f.write(data["css"])
-            with open("script.js","w") as f:
+            with open("uploads/script.js","w") as f:
                 f.write(data["js"])
             return "success!"
-while True:
-    query = input(">> ")
-    print(process(query=query))

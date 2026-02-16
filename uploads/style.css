@@ -1,8 +1,8 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,39 +23,38 @@ h1 {
     color: #333;
 }
 
-.input-area {
+.input-section {
     display: flex;
     margin-bottom: 20px;
 }
 
-.input-area input {
+.input-section input {
     flex: 1;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 16px;
+    margin-right: 10px;
 }
 
-.input-area button {
+.input-section button {
+    background-color: #4CAF50;
+    color: white;
     padding: 10px 15px;
     border: none;
-    background-color: #5cb85c;
-    color: white;
     border-radius: 4px;
     cursor: pointer;
-    margin-left: 10px;
 }
 
-.input-area button:hover {
-    background-color: #449d44;
+.input-section button:hover {
+    background-color: #3e8e41;
 }
 
-#todoList {
+#taskList {
     list-style: none;
     padding: 0;
 }
 
-#todoList li {
+#taskList li {
     padding: 10px;
     border-bottom: 1px solid #eee;
     display: flex;
@@ -63,21 +62,12 @@ h1 {
     align-items: center;
 }
 
-#todoList li:last-child {
+#taskList li:last-child {
     border-bottom: none;
 }
 
-#todoList li .todo-text {
-    flex: 1;
-}
-
-#todoList li.completed {
-    color: #888;
-    text-decoration: line-through;
-}
-
-#todoList li button {
-    background-color: #d9534f;
+#taskList li .delete-button {
+    background-color: #f44336;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -85,6 +75,6 @@ h1 {
     cursor: pointer;
 }
 
-#todoList li button:hover {
-    background-color: #c9302c;
+#taskList li .delete-button:hover {
+    background-color: #da190b;
 }
